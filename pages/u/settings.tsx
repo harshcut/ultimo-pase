@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react';
 import type { NextPage, GetServerSideProps } from 'next';
-import { Fieldset, Button, useToasts, Input, Loading, Image, Radio } from '@geist-ui/react';
+import { useEffect, useState } from 'react';
+import { Fieldset, Button, useToasts, Input, Loading, Image, Radio, Text } from '@geist-ui/core';
 import { MetaHead } from '@/libs/components/.';
 import { Page } from '@/components/.';
 import { definitions, supabase } from '@/supabase/.';
@@ -10,7 +10,7 @@ const Settings: NextPage = () => {
   const { register: r1, handleSubmit: h1, formState: f1 } = useForm<{ full_name: string }>();
   const [profile, setProfile] = useState<definitions['profile'] | null>(null);
   const [avatar, setAvatar] = useState<string | null>(null);
-  const [, setToast] = useToasts();
+  const { setToast } = useToasts();
 
   useEffect(() => {
     (async () => {
@@ -68,29 +68,23 @@ const Settings: NextPage = () => {
                 <div className="max-w-sm sm:max-w-full">
                   <Input
                     width="100%"
-                    status={f1.errors.full_name && 'error'}
+                    type={f1.errors.full_name && 'error'}
                     initialValue={profile.full_name}
                     {...r1('full_name', { maxLength: 32 })}
                   />
                 </div>
                 <Fieldset.Footer>
-                  <Fieldset.Footer.Status>
-                    Please use 32 characters at maximum.
-                  </Fieldset.Footer.Status>
-                  <Fieldset.Footer.Actions>
-                    <Button auto size="small" type="secondary" onClick={h1(updateName)}>
-                      Update
-                    </Button>
-                  </Fieldset.Footer.Actions>
+                  <Text>Please use 32 characters at maximum.</Text>
+                  <Button auto h="30px" scale={0.75} type="secondary" onClick={h1(updateName)}>
+                    Update
+                  </Button>
                 </Fieldset.Footer>
               </Fieldset>
             </form>
             <Fieldset className="relative">
-              <div className="absolute top-10 right-10 sm:static mb-5">
+              <div className="absolute top-10 right-10 sm:static sm:text-center mb-5">
                 <Image
                   src={`https://source.boringavatars.com/${avatar}/78/${profile.id}`}
-                  height={78}
-                  width={78}
                   alt="avatar"
                 />
               </div>
@@ -111,14 +105,10 @@ const Settings: NextPage = () => {
                 </Radio>
               </Radio.Group>
               <Fieldset.Footer>
-                <Fieldset.Footer.Status>
-                  Avatar artwork by Hayk An and Josep Martins.
-                </Fieldset.Footer.Status>
-                <Fieldset.Footer.Actions>
-                  <Button auto size="small" type="secondary" onClick={updateAvatar}>
-                    Update
-                  </Button>
-                </Fieldset.Footer.Actions>
+                <Text>Avatars by Hayk An and Josep Martins.</Text>
+                <Button auto h="30px" scale={0.75} type="secondary" onClick={updateAvatar}>
+                  Update
+                </Button>
               </Fieldset.Footer>
             </Fieldset>
           </div>

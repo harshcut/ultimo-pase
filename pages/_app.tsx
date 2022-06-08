@@ -1,8 +1,8 @@
-import { useEffect } from 'react';
 import type { NextPage } from 'next';
 import type { AppProps } from 'next/app';
+import { useEffect } from 'react';
 import { useRouter } from 'next/router';
-import { CssBaseline, GeistProvider } from '@geist-ui/react';
+import { CssBaseline, GeistProvider } from '@geist-ui/core';
 import { Footer } from '@/components/.';
 import { UserMenu } from '@/libs/components/.';
 import { supabase } from '@/supabase/.';
@@ -37,6 +37,9 @@ const MyApp: NextPage<AppProps> = ({ Component, pageProps }: AppProps) => {
         <Footer />
       </GeistProvider>
       <style global jsx>{`
+        * {
+          box-sizing: border-box !important;
+        }
         .canvas {
           background-color: #ff4800;
           background-image: radial-gradient(#e3e3e3 1px, transparent 0),

@@ -1,8 +1,8 @@
 import React from 'react';
 import type { User as UserTypes } from '@supabase/gotrue-js';
 import NextLink from 'next/link';
-import { Link } from '@geist-ui/react';
-import { User, Mail, Key, Clock, CheckInCircle, UserPlus } from '@geist-ui/react-icons';
+import { Link } from '@geist-ui/core';
+import { User, Mail, Key, Clock, CheckInCircle, UserPlus } from '@geist-ui/icons';
 import moment from 'moment';
 import { definitions } from '@/supabase/.';
 

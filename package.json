@@ -9,8 +9,8 @@
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
   },
   "dependencies": {
-    "@geist-ui/react": "^2.1.5",
-    "@geist-ui/react-icons": "^1.0.1",
+    "@geist-ui/core": "^2.3.8",
+    "@geist-ui/icons": "^1.0.2",
     "@supabase/supabase-js": "^1.28.2",
     "inter-ui": "^3.19.3",
     "moment": "^2.29.1",

@@ -2,8 +2,8 @@ import type { NextPage, GetServerSideProps } from 'next';
 import { useRouter } from 'next/router';
 import { MetaHead } from '@/libs/components/.';
 import { supabase } from '@/supabase/.';
-import { Button, Card, Input } from '@geist-ui/react';
-import { Search } from '@geist-ui/react-icons';
+import { Button, Card, Input } from '@geist-ui/core';
+import { Search } from '@geist-ui/icons';
 import { Page } from '@/components/.';
 
 const Vault: NextPage = () => {
@@ -13,8 +13,8 @@ const Vault: NextPage = () => {
     <>
       <MetaHead title="Vault" />
       <Page className="grid gap-5">
-        <div className="flex gap-5 items-center">
-          <Input placeholder="Search" icon={<Search color="#888" />} size="large" width="100%" />
+        <div className="flex gap-5">
+          <Input placeholder="Search" icon={<Search color="#888" />} scale={1.3} width="100%" />
           <Button auto type="secondary" onClick={() => router.push('/u/new')}>
             New Secret
           </Button>

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useRouter } from 'next/router';
-import { Text, Tabs, Button, useCurrentState, useToasts } from '@geist-ui/react';
+import { Text, Tabs, Button, useCurrentState, useToasts } from '@geist-ui/core';
 import { useLocale, tabData } from '@/libs/.';
 import { Header } from '@/components/.';
 import { supabase } from '@/supabase/.';
@@ -10,7 +10,7 @@ const Menu = (): React.ReactElement => {
   const { tabbar: currentUrlTabValue, locale } = useLocale();
   const [tabValue, setTabValue, tabValueRef] = useCurrentState<string>('');
   const [fixed, setFixed, fixedRef] = useCurrentState<boolean>(false);
-  const [, setToast] = useToasts();
+  const { setToast } = useToasts();
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => setTabValue(currentUrlTabValue), [currentUrlTabValue]);
@@ -48,18 +48,15 @@ const Menu = (): React.ReactElement => {
               Ultimo Pase
             </Text>
           </div>
-          <div className="flex gap-1">
-            <Button auto size="small" type="abort">
-              Feedback
-            </Button>
-            <Button auto size="small" onClick={onLogOut}>
+          <div className="flex gap-2 items-center">
+            <Button auto h="30px" scale={0.75} onClick={onLogOut}>
               Log Out
             </Button>
           </div>
         </section>
         <div className={`pointer-events-none w-0 ${fixed ? 'h-12 visible' : 'h-0 invisible'}`} />
         <nav className={`h-12 w-full ${fixed ? 'fixed inset-x-0 top-0' : 'relative'}`}>
-          <div className="inner max-w-xl h-full px-5 flex items-end my-0 mx-auto">
+          <div className="inner max-w-xl h-full pr-5 flex items-end my-0 mx-auto">
             <Tabs value={tabValue} onChange={(val) => setTabValue(val)}>
               {tabData.map((tab, index) => (
                 <Tabs.Item label={tab.name} value={tab.name.toLowerCase()} key={index} />

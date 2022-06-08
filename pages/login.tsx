@@ -1,8 +1,8 @@
-import { useState } from 'react';
 import type { NextPage, GetServerSideProps } from 'next';
 import type { LogInTypes } from '@/libs/form-data';
+import { useState } from 'react';
 import Link from 'next/link';
-import { Text, Input, Button, Divider, Spacer, useToasts } from '@geist-ui/react';
+import { Text, Input, Button, Divider, useToasts } from '@geist-ui/core';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { MetaHead } from '@/libs/components/.';
 import { supabase } from '@/supabase/.';
@@ -10,7 +10,7 @@ import { supabase } from '@/supabase/.';
 const Login: NextPage = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const { register, handleSubmit, formState } = useForm<LogInTypes>();
-  const [, setToast] = useToasts();
+  const { setToast } = useToasts();
 
   const onSubmit: SubmitHandler<LogInTypes> = async ({ email, password }: LogInTypes) => {
     setLoading(true);
@@ -31,19 +31,18 @@ const Login: NextPage = () => {
       <MetaHead title="Log In" />
       <div className="flex flex-row min-h-screen">
         <section className="w-98 p-12 box-border flex-shrink-0 sm:w-screen">
-          <header>
+          <header className="mb-10">
             <Text h3>Ultimo Pase</Text>
             <Text type="success" span b>
               A safe vault for all your secrets.
             </Text>
           </header>
-          <Spacer y={2} />
-          <form onSubmit={handleSubmit(onSubmit)} className="grid gap-3">
+          <form onSubmit={handleSubmit(onSubmit)} className="grid gap-3 mb-10">
             <Text h4>Log in to your vault</Text>
             <Input
-              type="email"
+              htmlType="email"
               width="100%"
-              status={formState.errors.email && 'error'}
+              type={formState.errors.email && 'error'}
               {...register('email', { required: true })}
               disabled={loading}
             >
@@ -53,7 +52,7 @@ const Login: NextPage = () => {
             </Input>
             <Input.Password
               width="100%"
-              status={formState.errors.password && 'error'}
+              type={formState.errors.password && 'error'}
               {...register('password', { required: true, min: 6 })}
               disabled={loading}
             >
@@ -64,7 +63,7 @@ const Login: NextPage = () => {
             <Button htmlType="submit" shadow type="success" loading={loading}>
               Log In
             </Button>
-            <Divider y={2}>
+            <Divider my={4}>
               <Text small b>
                 OR
               </Text>
@@ -73,7 +72,6 @@ const Login: NextPage = () => {
               Log In With Google
             </Button>
           </form>
-          <Spacer y={2} />
           <Text>
             Don&apos;t have an account?{' '}
             <Link href="/register">

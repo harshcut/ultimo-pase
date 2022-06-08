@@ -12,7 +12,7 @@ const footerData: FooterTypes = [
     items: [
       { name: 'Next.js', url: 'https://vercel.com/solutions/nextjs' },
       { name: 'Supabase', url: 'https://supabase.io/' },
-      { name: 'Geist UI', url: 'https://react.geist-ui.dev/' },
+      { name: 'Geist UI', url: 'https://geist-ui.dev/' },
       { name: 'React', url: 'https://reactjs.org/' },
     ],
   },

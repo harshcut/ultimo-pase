@@ -1,12 +1,12 @@
-import { useState } from 'react';
 import type { NextPage, GetServerSideProps } from 'next';
 import type { User as UserTypes } from '@supabase/gotrue-js';
 import type { NewSecretTypes } from '@/libs/form-data';
+import { useState } from 'react';
 import { useRouter } from 'next/router';
 import { MetaHead } from '@/libs/components/.';
 import { useForm, SubmitHandler } from 'react-hook-form';
-import { Button, Input, Text, Textarea } from '@geist-ui/react';
-import { RefreshCcw, AtSign, ArrowLeft } from '@geist-ui/react-icons';
+import { Button, Input, Text, Textarea } from '@geist-ui/core';
+import { RefreshCcw, AtSign, ArrowLeft } from '@geist-ui/icons';
 import { supabase } from '@/supabase/.';
 
 interface Props {
@@ -42,11 +42,11 @@ const New: NextPage<Props> = ({ user }: Props) => {
           <form onSubmit={handleSubmit(onSubmit)} className="grid gap-3">
             <div className="flex items-center justify-between gap-5 mb-2">
               <h4 className="m-0">Create New Secret</h4>
-              <Button icon={<ArrowLeft />} auto size="small" onClick={() => router.back()} />
+              <Button icon={<ArrowLeft />} auto scale={1} onClick={() => router.back()} />
             </div>
             <Input
               width="100%"
-              status={formState.errors.organisation && 'error'}
+              type={formState.errors.organisation && 'error'}
               {...register('organisation', { required: true })}
               placeholder="Acme Inc."
             >
@@ -64,7 +64,7 @@ const New: NextPage<Props> = ({ user }: Props) => {
                   Email Address
                 </Text>
               </Input>
-              <Button icon={<AtSign />} auto size="small" onClick={() => setHideUser(!hideUser)} />
+              <Button icon={<AtSign />} auto scale={1} onClick={() => setHideUser(!hideUser)} />
             </div>
             {!hideUser && (
               <Input width="100%" {...register('username')}>
@@ -76,7 +76,7 @@ const New: NextPage<Props> = ({ user }: Props) => {
             <div className="flex items-end gap-3">
               <Input.Password
                 width="100%"
-                status={formState.errors.password && 'error'}
+                type={formState.errors.password && 'error'}
                 {...register('password', { required: true })}
                 onChange={(e) => {
                   setValue('password', e.target.value);
@@ -90,7 +90,7 @@ const New: NextPage<Props> = ({ user }: Props) => {
               <Button
                 icon={<RefreshCcw />}
                 auto
-                size="small"
+                scale={1}
                 onClick={() =>
                   setValue(
                     'password',
@@ -103,7 +103,7 @@ const New: NextPage<Props> = ({ user }: Props) => {
             </div>
             <Input.Password
               width="100%"
-              status={formState.errors.confirm && 'error'}
+              type={formState.errors.confirm && 'error'}
               {...register('confirm', { required: true })}
               onChange={onChange}
             >

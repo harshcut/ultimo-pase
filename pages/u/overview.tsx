@@ -1,10 +1,10 @@
-import { useEffect, useState } from 'react';
 import type { NextPage, GetServerSideProps } from 'next';
 import type { User as UserTypes } from '@supabase/supabase-js';
+import { useEffect, useState } from 'react';
 import NextLink from 'next/link';
 import { useRouter } from 'next/router';
-import { Button, Card, Link, Text, User, Loading, useToasts } from '@geist-ui/react';
-import { Clock, CheckInCircle } from '@geist-ui/react-icons';
+import { Button, Card, Link, Text, User, Loading, useToasts } from '@geist-ui/core';
+import { Clock, CheckInCircle } from '@geist-ui/icons';
 import moment from 'moment';
 import { MetaHead } from '@/libs/components/.';
 import { Page } from '@/components/.';
@@ -17,7 +17,7 @@ interface Props {
 const Overview: NextPage<Props> = ({ user }: Props) => {
   const router = useRouter();
   const [profile, setProfile] = useState<definitions['profile'] | null>(null);
-  const [, setToast] = useToasts();
+  const { setToast } = useToasts();
 
   useEffect(() => {
     (async () => {
@@ -53,8 +53,8 @@ const Overview: NextPage<Props> = ({ user }: Props) => {
           <div className="mt-5 grid">
             <Text small>Explore more integrations and expand your account security.</Text>
             <NextLink href="/u/settings">
-              <Link color underline className="text-sm">
-                Create Personal Identification Number &rarr;
+              <Link color underline>
+                <Text small>Create Personal Identification Number &rarr;</Text>
               </Link>
             </NextLink>
           </div>
@@ -87,8 +87,8 @@ const Overview: NextPage<Props> = ({ user }: Props) => {
             </div>
           )}
           <NextLink href="/u/activity">
-            <Link color underline className="text-sm">
-              View All Activity &rarr;
+            <Link color underline>
+              <Text small>View All Activity &rarr;</Text>
             </Link>
           </NextLink>
         </div>

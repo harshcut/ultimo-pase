@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Pagination } from '@geist-ui/react';
+import { Pagination } from '@geist-ui/core';
 import moment from 'moment';
 import { definitions } from '@/supabase/.';
 import { GearCircle, PlusCircle } from './icons';

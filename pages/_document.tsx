@@ -1,6 +1,6 @@
-import Document, { Html, Head, Main, NextScript, DocumentInitialProps } from 'next/document';
-import type { DocumentContext } from 'next/document';
-import { CssBaseline } from '@geist-ui/react';
+import type { DocumentContext, DocumentInitialProps } from 'next/document';
+import Document, { Html, Head, Main, NextScript } from 'next/document';
+import { CssBaseline } from '@geist-ui/core';
 
 class MyDocument extends Document {
   static getInitialProps = async (ctx: DocumentContext): Promise<DocumentInitialProps> => {

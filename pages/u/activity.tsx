@@ -1,8 +1,8 @@
-import { useEffect, useState } from 'react';
 import type { NextPage, GetServerSideProps } from 'next';
 import type { User as UserTypes } from '@supabase/gotrue-js';
+import { useEffect, useState } from 'react';
 import NextLink from 'next/link';
-import { Link, Loading, Text, useToasts } from '@geist-ui/react';
+import { Link, Loading, Text, useToasts } from '@geist-ui/core';
 import { MetaHead } from '@/libs/components/.';
 import { Page, Summary, Timeline } from '@/components/.';
 import { definitions, supabase } from '@/supabase/.';
@@ -14,7 +14,7 @@ interface Props {
 const Activity: NextPage<Props> = ({ user }: Props) => {
   const [profile, setProfile] = useState<definitions['profile'] | null>(null);
   const [timeline, setTimeline] = useState<definitions['timeline'][] | null>(null);
-  const [, setToast] = useToasts();
+  const { setToast } = useToasts();
 
   useEffect(() => {
     (async () => {
@@ -44,8 +44,8 @@ const Activity: NextPage<Props> = ({ user }: Props) => {
             </div>
           )}
           <NextLink href="/u/settings">
-            <Link color underline className="text-sm">
-              View Account Settings &rarr;
+            <Link color underline>
+              <Text small>View Account Settings &rarr;</Text>
             </Link>
           </NextLink>
         </div>

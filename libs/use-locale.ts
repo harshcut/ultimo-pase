@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
-import { useCurrentState } from '@geist-ui/react';
+import { useCurrentState } from '@geist-ui/core';
 
 const DEFAULT_LOCALE = '';
 const DEFAULT_TAB = '';
