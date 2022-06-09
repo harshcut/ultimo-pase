@@ -1,4 +1,5 @@
 import type { DocumentContext, DocumentInitialProps } from 'next/document';
+import { Fragment } from 'react';
 import Document, { Html, Head, Main, NextScript } from 'next/document';
 import { CssBaseline } from '@geist-ui/core';
 
@@ -9,12 +10,12 @@ class MyDocument extends Document {
 
     return {
       ...initialProps,
-      styles: (
-        <>
+      styles: [
+        <Fragment key="1">
           {initialProps.styles}
           {styles}
-        </>
-      ),
+        </Fragment>,
+      ],
     };
   };
 
