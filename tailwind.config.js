@@ -1,6 +1,5 @@
 module.exports = {
-  purge: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
-  darkMode: false,
+  content: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
   theme: {
     screens: {
       sm: { max: '480px' },
@@ -16,9 +15,6 @@ module.exports = {
         98: '24.5rem',
       },
     },
-  },
-  variants: {
-    extend: {},
   },
   plugins: [],
   corePlugins: {
